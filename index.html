@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wiam Arezqi — Portfolio</title>
+
+    <!-- Fonts (Google Fonts uniquement) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -18,8 +21,6 @@
             --blue: #2563eb;
             --yellow: #fbbf24;
             --dark: #1e293b;
-            --light: #f1f5f9;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         body {
@@ -29,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* Particules d'arrière-plan */
+        /* Particules */
         .particles {
             position: fixed;
             width: 100%;
@@ -46,11 +47,11 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.7; }
+            0%, 100% { transform: translateY(0); opacity: 0.3; }
+            50% { transform: translateY(-100px); opacity: 0.7; }
         }
 
-        /* Navigation fixe */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -73,7 +74,6 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
             position: relative;
         }
 
@@ -92,74 +92,47 @@
             width: 100%;
         }
 
-        /* Hero section FOLLE */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
-        }
-
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
         }
 
         .hero-content {
-            position: relative;
-            z-index: 10;
+            z-index: 1;
             text-align: center;
-            max-width: 900px;
             padding: 2rem;
+            max-width: 900px;
         }
 
         .hero-tag {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.2);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
-            backdrop-filter: blur(10px);
             margin-bottom: 1rem;
             font-size: 0.9rem;
             font-weight: 600;
             letter-spacing: 2px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
             background: linear-gradient(45deg, #fff, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease;
         }
 
         .hero-subtitle {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            margin-bottom: 2rem;
+            margin: 2rem 0;
             line-height: 1.8;
-            animation: fadeInUp 1s ease 0.3s backwards;
+            font-size: 1.1rem;
         }
 
         .hero-buttons {
@@ -167,86 +140,27 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.6s backwards;
         }
 
         .btn {
             padding: 1rem 2.5rem;
-            border: none;
             border-radius: 50px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
             text-decoration: none;
-            display: inline-block;
-            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
         .btn-primary {
             background: var(--yellow);
             color: var(--dark);
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.6);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: white;
             border: 2px solid white;
+            color: white;
         }
 
-        .btn-secondary:hover {
-            background: white;
-            color: var(--dark);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Floating shapes */
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            animation: floating 15s infinite;
-        }
-
-        .shape1 {
-            width: 300px;
-            height: 300px;
-            background: rgba(251, 191, 36, 0.1);
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .shape2 {
-            width: 200px;
-            height: 200px;
-            background: rgba(37, 99, 235, 0.1);
-            bottom: 15%;
-            right: 10%;
-            animation-delay: 3s;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-
-        /* Section style */
         section {
             padding: 5rem 2rem;
             position: relative;
@@ -263,26 +177,26 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Skills section FOLLE avec cercles */
+        /* Skills */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 3rem;
             max-width: 1000px;
-            margin: 0 auto;
+            margin: auto;
         }
 
         .skill-circle {
-            position: relative;
             width: 150px;
             height: 150px;
-            margin: 0 auto;
+            margin: auto;
+            position: relative;
         }
 
         .skill-circle svg {
-            transform: rotate(-90deg);
             width: 150px;
             height: 150px;
+            transform: rotate(-90deg);
         }
 
         .skill-circle circle {
@@ -291,22 +205,14 @@
             stroke-linecap: round;
         }
 
-        .skill-circle .bg {
-            stroke: rgba(255, 255, 255, 0.1);
+        .bg {
+            stroke: rgba(255,255,255,0.1);
         }
 
-        .skill-circle .progress {
+        .progress {
             stroke: var(--yellow);
             stroke-dasharray: 440;
-            stroke-dashoffset: 440;
-            animation: progress 2s ease forwards;
-            filter: drop-shadow(0 0 10px var(--yellow));
-        }
-
-        @keyframes progress {
-            to {
-                stroke-dashoffset: var(--offset);
-            }
+            stroke-dashoffset: var(--offset);
         }
 
         .skill-info {
@@ -317,266 +223,66 @@
             text-align: center;
         }
 
-        .skill-percentage {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--yellow);
-        }
-
-        .skill-name {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            font-weight: 600;
-        }
-
-        /* Projects avec cartes 3D */
+        /* Cards */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: auto;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
             padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 60px rgba(251, 191, 36, 0.3);
-            border-color: var(--yellow);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .project-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            display: inline-block;
-            animation: bounce 2s infinite;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--yellow);
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background: rgba(251, 191, 36, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid var(--yellow);
-        }
-
-        /* Timeline pour expériences */
+        /* Timeline */
         .timeline {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--yellow), var(--blue));
+            max-width: 900px;
+            margin: auto;
         }
 
         .timeline-item {
-            display: flex;
-            justify-content: space-between;
             margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.05);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
         }
 
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--yellow);
-            border-radius: 50%;
-            border: 4px solid #0f172a;
-            box-shadow: 0 0 20px var(--yellow);
-            z-index: 10;
-        }
-
-        .timeline-content h3 {
-            color: var(--yellow);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .timeline-content .company {
-            color: var(--blue);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* Stats animées */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 3rem auto;
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .stat-box:hover {
-            transform: scale(1.05);
-            border-color: var(--yellow);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--yellow);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            opacity: 0.8;
-        }
-
-        /* Contact section */
-        .contact-section {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
+        /* Contact */
         .contact-grid {
             display: flex;
-            justify-content: center;
             gap: 2rem;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.05);
             padding: 1.5rem 2.5rem;
             border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            text-decoration: none;
-            color: white;
+            border: 2px solid rgba(255,255,255,0.1);
             font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .contact-item:hover {
-            border-color: var(--yellow);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
-            background: rgba(0, 0, 0, 0.5);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.5);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-            }
-
-            .timeline-content {
-                width: 100%;
-                margin-left: 60px;
-            }
-
-            .timeline-dot {
-                left: 30px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Scroll animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s;
+            transition: 0.6s;
         }
 
         .fade-in.visible {
@@ -585,418 +291,122 @@
         }
     </style>
 </head>
+
 <body>
-    <!-- Particules -->
-    <div class="particles" id="particles"></div>
 
+<nav>
+    <ul>
+        <li><a href="#hero">Accueil</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#experience">Parcours</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
+<div class="particles" id="particles"></div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
-        <div class="hero-content">
-            <div class="hero-tag">✨ ÉLÈVE-INGÉNIEURE • ENSEIRB-MATMECA</div>
-            <h1>WIAM AREZQI</h1>
-            <p class="hero-subtitle">
-                2ᵉ année du cycle ingénieur en informatique à l'ENSEIRB-MATMECA (Bordeaux INP).<br>
-                Spécialisée en algorithmique, développement logiciel et programmation système.<br>
-                🔍 Recherche un stage de 3–4 mois (mai–septembre 2026)
-            </p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Me contacter</a>
-                <a href="#projects" class="btn btn-secondary">Voir mes projets</a>
-            </div>
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="hero-tag">✨ ÉLÈVE-INGÉNIEURE • ENSEIRB-MATMECA</div>
+        <h1>WIAM AREZQI</h1>
+        <p class="hero-subtitle">
+            Élève-ingénieure en informatique (2ᵉ année).<br>
+            Algorithmique, développement logiciel, programmation système.<br>
+            Recherche stage 3–4 mois (mai–septembre 2026)
+        </p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Me contacter</a>
+            <a href="#projects" class="btn btn-secondary">Voir mes projets</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Skills avec cercles -->
-    <section id="skills">
-        <h2 class="section-title">Compétences Techniques</h2>
-        <div class="skills-grid">
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 44"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">90%</div>
-                    <div class="skill-name">C/C++</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 88"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">80%</div>
-                    <div class="skill-name">Python</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 110"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">75%</div>
-                    <div class="skill-name">Java</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 132"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">75%</div>
-                    <div class="skill-name">JavaScript</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 66"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">85%</div>
-                    <div class="skill-name">Linux</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 88"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">80%</div>
-                    <div class="skill-name">Git</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 110"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">75%</div>
-                    <div class="skill-name">HTML/CSS</div>
-                </div>
-            </div>
+<section id="skills">
+    <h2 class="section-title">Compétences Techniques</h2>
+    <div class="skills-grid">
+        <div class="skill-circle fade-in">
+            <svg>
+                <circle class="bg" cx="75" cy="75" r="70"></circle>
+                <circle class="progress" cx="75" cy="75" r="70" style="--offset:44"></circle>
+            </svg>
+            <div class="skill-info">C / C++</div>
         </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" style="background: rgba(0,0,0,0.3);">
-        <h2 class="section-title">Projets Innovants</h2>
-        <div class="projects-grid">
-            <div class="project-card fade-in">
-                <div class="project-icon">🦯</div>
-                <h3>Canne blanche électronique intelligente</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Arduino</span>
-                    <span class="tech-tag">Capteurs</span>
-                    <span class="tech-tag">IoT</span>
-                </div>
-                <p>Dispositif d'assistance pour personnes aveugles avec capteurs ultrasoniques et infrarouges pour la détection d'obstacles en temps réel.</p>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-icon">⚙️</div>
-                <h3>Compilateur MyC → PCode</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Yacc</span>
-                    <span class="tech-tag">Lex</span>
-                    <span class="tech-tag">Compilation</span>
-                </div>
-                <p>Compilateur complet pour mini-langage inspiré du C avec analyse syntaxique et génération de PCode.</p>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-icon">🎧</div>
-                <h3>Logiciel audio longue durée</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Research</span>
-                    <span class="tech-tag">Audio</span>
-                    <span class="tech-tag">Psychiatrie</span>
-                </div>
-                <p>Logiciel de recherche en psychiatrie avec enregistrement audio longue durée et gestion précise du temps.</p>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-icon">📅</div>
-                <h3>Gestionnaire de calendrier</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">POO</span>
-                    <span class="tech-tag">ICS</span>
-                </div>
-                <p>Application complète de gestion d'agenda avec import/export ICS et architecture orientée objet avancée.</p>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-icon">🅿️</div>
-                <h3>Base de données parkings</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">SQL</span>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">MySQL</span>
-                </div>
-                <p>Système de gestion des parkings du campus avec interface web et requêtes SQL optimisées.</p>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-icon">🎮</div>
-                <h3>Jeu Carcassonne</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">C</span>
-                    <span class="tech-tag">Algorithmique</span>
-                    <span class="tech-tag">Gaming</span>
-                </div>
-                <p>Programmation complète du jeu de plateau Carcassonne en C avec gestion des tuiles, des règles et de l'IA.</p>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-icon">🏙️</div>
-                <h3>Jeu Megalopolis</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Web</span>
-                </div>
-                <p>Développement d'un jeu de stratégie urbaine interactif avec JavaScript et Node.js, incluant gestion temps réel et multijoueur.</p>
-            </div>
+        <div class="skill-circle fade-in">
+            <svg>
+                <circle class="bg" cx="75" cy="75" r="70"></circle>
+                <circle class="progress" cx="75" cy="75" r="70" style="--offset:88"></circle>
+            </svg>
+            <div class="skill-info">Python</div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Experience Timeline -->
-    <section id="experience">
-        <h2 class="section-title">Parcours Professionnel</h2>
-        <div class="timeline">
-            <div class="timeline-item fade-in">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Stagiaire</h3>
-                    <p class="company">AXA Assurance · Maroc</p>
-                    <p>Digitalisation de 200+ contrats clients avec développement d'une solution automatisée réduisant le temps de recherche de 60%.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Assistante pédagogique</h3>
-                    <p class="company">Complétude</p>
-                    <p>Soutien scolaire en mathématiques et informatique avec développement de supports pédagogiques adaptés.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Membre du BDE</h3>
-                    <p class="company">ENSEIRB-MATMECA</p>
-                    <p>Organisation d'événements étudiants (soirées, tournois sportifs ...), communication et logistique.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Volontaire humanitaire</h3>
-                    <p class="company">Projet international</p>
-                    <p>Mission de 3 semaines en zone défavorisée : soutien éducatif et actions communautaires.</p>
-                </div>
-            </div>
+<section id="projects">
+    <h2 class="section-title">Projets</h2>
+    <div class="projects-grid">
+        <div class="project-card fade-in">
+            <div class="project-icon">🦯</div>
+            <h3>Canne blanche intelligente</h3>
+            <p>Dispositif d’assistance avec capteurs pour détection d’obstacles.</p>
         </div>
-    </section>
-
-    <!-- Langues -->
-    <section style="background: rgba(0,0,0,0.2); padding: 4rem 2rem;">
-        <h2 class="section-title">Langues</h2>
-        <div class="skills-grid" style="max-width: 800px;">
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 0"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">100%</div>
-                    <div class="skill-name">Arabe</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 44"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">90%</div>
-                    <div class="skill-name">Français</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 88"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">80%</div>
-                    <div class="skill-name">Anglais</div>
-                </div>
-            </div>
-
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 264"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">40%</div>
-                    <div class="skill-name">Espagnol</div>
-                </div>
-            </div>
+        <div class="project-card fade-in">
+            <div class="project-icon">⚙️</div>
+            <h3>Compilateur MyC</h3>
+            <p>Analyse syntaxique et génération de PCode.</p>
         </div>
-        <div style="text-align: center; margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">
-            <p>🇲🇦 Arabe (natif) · 🇫🇷 Français (C1) · 🇬🇧 Anglais (B2 - TOEIC 865) · 🇪🇸 Espagnol (A2)</p>
+    </div>
+</section>
+
+<section id="experience">
+    <h2 class="section-title">Parcours</h2>
+    <div class="timeline">
+        <div class="timeline-item fade-in">
+            <h3>Stagiaire — AXA Assurance</h3>
+            <p>Digitalisation et organisation de contrats clients.</p>
         </div>
-    </section>
-
-    <!-- Loisirs -->
-    <section id="hobbies">
-        <h2 class="section-title">Centres d'Intérêt</h2>
-        <div class="projects-grid" style="max-width: 1000px;">
-            <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">🎹</div>
-                <h3>Piano</h3>
-                <p>Pratique régulière du piano classique et moderne</p>
-            </div>
-
-            <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">🏃‍♀️</div>
-                <h3>Course à pied</h3>
-                <p>Semi-marathons et running passionnée</p>
-            </div>
-
-            <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">💪</div>
-                <h3>Sport & Gym</h3>
-                <p>Entraînement régulier et fitness</p>
-            </div>
-
-            <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">✈️</div>
-                <h3>Voyages</h3>
-                <p>Découverte de nouvelles cultures et destinations</p>
-            </div>
-
-            <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">📚</div>
-                <h3>Lecture</h3>
-                <p>Science-fiction et développement personnel</p>
-            </div>
+        <div class="timeline-item fade-in">
+            <h3>Membre du BDE</h3>
+            <p>Organisation et communication d’événements étudiants.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact -->
-    <section class="contact-section" id="contact">
-        <h2 class="section-title">Restons en Contact</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Prête à discuter de votre projet ? Contactez-moi !</p>
-        <div class="contact-grid">
-           <div class="contact-item">
-    📧 wiamarezqii@gmail.com
-</div>
+<section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+        <div class="contact-item">📧 wiamarezqii@gmail.com</div>
+        <div class="contact-item">📞 07 45 39 24 59</div>
+        <div class="contact-item">📍 Talence, France</div>
+    </div>
+</section>
 
-<div class="contact-item">
-    📞 07 45 39 24 59
-</div>
+<footer>
+    © 2026 Wiam Arezqi — Portfolio
+</footer>
 
-            <span class="contact-item">
-                📍 Talence, France
-            </span>
-        </div>
-    </section>
+<script>
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 5 + 2;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 20 + 's';
+        particlesContainer.appendChild(p);
+    }
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Wiam Arezqi — Portfolio</p>
-    </footer>
-
-    <script>
-        // Particules générées dynamiquement
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 5 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = Math.random() * 10 + 15 + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Intersection Observer pour animations au scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Animation des statistiques
-        function animateNumber(element) {
-            const target = parseInt(element.dataset.target);
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 16);
-        }
-
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const number = entry.target.querySelector('.stat-number');
-                    animateNumber(number);
-                    statObserver.unobserve(entry.target);
-                }
-            });
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('visible');
         });
+    });
 
-        document.querySelectorAll('.stat-box').forEach(el => statObserver.observe(el));
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
