@@ -1,260 +1,683 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wiam Arezqi — Portfolio</title>
-
-<style>
-  :root{
-    --blue:#5EC8FF;
-    --yellow:#FFD84D;
-    --dark:#0E1B2A;
-    --bg:#F7FBFF;
-    --card:#FFFFFF;
-    --muted:#5B6B7A;
-    --radius:18px;
-    --shadow:0 12px 30px rgba(0,0,0,.1);
-  }
-
-  /* Puces des listes en bleu ciel */
-  ul li::marker {
-    color: var(--blue);
-    font-size: 1.1em;
-  }
-    *{box-sizing:border-box;}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:
-        radial-gradient(1200px 600px at 10% 0%, rgba(94,200,255,.25), transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, rgba(255,216,77,.25), transparent 55%),
-        var(--bg);
-      color:var(--dark);
-    }
-  /* Titles in sky blue */
-h1, h2 {
-  color: var(--blue);
-}
-
-
-    a{color:inherit;text-decoration:none;}
-    .container{max-width:1100px;margin:auto;padding:24px;}
-
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:24px;
-    }
-
-    .logo{
-      width:44px;height:44px;border-radius:14px;
-      background:linear-gradient(135deg,var(--blue),var(--yellow));
-    }
-
-    nav a{
-      margin-left:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:white;
-      box-shadow:var(--shadow);
-      font-size:14px;
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:20px;
-    }
-
-    @media(max-width:800px){
-      .hero{grid-template-columns:1fr;}
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    h1{
-      font-size:40px;
-      margin:0 0 10px;
-    }
-
-    h2{
-      margin:0 0 12px;
-      font-size:22px;
-    }
-
-    p{color:var(--muted);}
-
-    .btn{
-      display:inline-block;
-      margin-top:10px;
-      padding:10px 14px;
-      border-radius:14px;
-      background:linear-gradient(135deg,var(--blue),var(--yellow));
-      font-weight:700;
-    }
-
-    section{margin-top:28px;}
-
-    ul{padding-left:18px;color:var(--muted);}
-    li{margin:6px 0;}
-
-    footer{
-      margin-top:40px;
-      text-align:center;
-      color:var(--muted);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiam Arezqi — Développeuse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2b4a;
+            --accent: #ffd700;
+            --soft: #f8f9fc;
+            --mid: #6b7a99;
+            --spacing: clamp(1rem, 3vw, 2rem);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--soft);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Elegant header with staggered animation */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: var(--spacing);
+            position: relative;
+            background: linear-gradient(135deg, #f8f9fc 0%, #e3e8f4 100%);
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-eyebrow {
+            font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards 0.2s;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards 0.4s;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            color: var(--mid);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards 0.6s;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards 0.8s;
+        }
+        
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            background: var(--primary);
+            color: var(--soft);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--soft);
+        }
+        
+        /* Decorative elements */
+        .deco-line {
+            position: absolute;
+            width: 1px;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+            right: 10%;
+            top: 20%;
+            opacity: 0.3;
+        }
+        
+        /* Main content with asymmetric grid */
+        main {
+            padding: calc(var(--spacing) * 3) var(--spacing);
+        }
+        
+        .section {
+            margin-bottom: calc(var(--spacing) * 4);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: calc(var(--spacing) * 1.5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+        }
+        
+        /* About section with side-by-side layout */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing) * 2);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-card {
+            background: white;
+            padding: calc(var(--spacing) * 1.5);
+            border-left: 3px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .about-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .info-item {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+            color: var(--mid);
+        }
+        
+        .info-item strong {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        /* Skills with elegant tags */
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .skill-category {
+            margin-bottom: calc(var(--spacing) * 1.5);
+        }
+        
+        .skill-category h3 {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .skill-tag {
+            padding: 0.5rem 1.25rem;
+            background: white;
+            border: 1px solid rgba(26, 26, 26, 0.1);
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        
+        .skill-tag:hover {
+            border-color: var(--accent);
+            background: var(--primary);
+            color: var(--soft);
+        }
+        
+        /* Projects with magazine-style layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: calc(var(--spacing) * 1.5);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            background: white;
+            padding: calc(var(--spacing) * 1.5);
+            position: relative;
+            transition: all 0.4s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        
+        .project-tech {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .project-card p {
+            color: var(--mid);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        /* Experience timeline */
+        .experience-list {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .experience-list::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+        
+        .experience-item {
+            margin-bottom: calc(var(--spacing) * 2);
+            position: relative;
+            background: white;
+            padding: calc(var(--spacing) * 1.25);
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: calc(var(--spacing) * 1.25);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--soft);
+        }
+        
+        .experience-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-company {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Languages & Interests */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing) * 2);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .info-box {
+            background: white;
+            padding: calc(var(--spacing) * 1.5);
+        }
+        
+        .info-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+            color: var(--mid);
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .info-list strong {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        /* Contact footer */
+        footer {
+            background: var(--primary);
+            color: var(--soft);
+            padding: calc(var(--spacing) * 3) var(--spacing);
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: calc(var(--spacing) * 1.5);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--spacing) * 2);
+            flex-wrap: wrap;
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+        
+        .contact-item {
+            font-size: 1.125rem;
+            color: var(--soft);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            color: var(--accent);
+        }
+        
+        .footer-note {
+            font-size: 0.875rem;
+            color: var(--mid);
+            margin-top: calc(var(--spacing) * 2);
+        }
+        
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid,
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-list {
+                padding-left: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .deco-line {
+                display: none;
+            }
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Intersection observer animations */
+        .section {
+            animation: none;
+        }
+        
+        .section.visible {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-
     <header>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div class="logo"></div>
-        <strong>Wiam Arezqi</strong>
-      </div>
-      <nav>
-        <a href="#skills">Compétences</a>
-        <a href="#projects">Projets</a>
-        <a href="#experience">Expériences</a>
-        <a href="#contact">Contact</a>
-      </nav>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Étudiante en informatique</p>
+            <h1>Wiam Arezqi</h1>
+            <p class="hero-subtitle">
+                Passionnée par l'algorithmique, le développement logiciel et la programmation système. 
+                À la recherche d'un stage de 3–4 mois (mai–septembre 2026).
+            </p>
+            <div class="cta-group">
+                <a href="#contact" class="btn">Me contacter</a>
+                <a href="#projects" class="btn btn-outline">Voir mes projets</a>
+            </div>
+        </div>
+        <div class="deco-line"></div>
     </header>
 
-    <div class="hero">
-      <div class="card">
-        <h1>Étudiante en informatique</h1>
-        <p>
-          Étudiante en 2e année à l’ENSEIRB–MATMECA (Bordeaux INP),
-          passionnée par l’algorithmique, le développement logiciel
-          et la programmation système.
-        </p>
-        <p>
-          🔍 Recherche un <strong>stage de 3–4 mois (mai–septembre 2026)</strong>
-        </p>
-        <a class="btn" href="#contact">Me contacter</a>
-      </div>
+    <main>
+        <section class="section" id="about">
+            <h2 class="section-title">À propos</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Formation</h3>
+                    <p class="info-item">
+                        <strong>ENSEIRB–MATMECA</strong><br>
+                        Bordeaux INP · 2e année<br>
+                        Spécialité Informatique
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3>Informations</h3>
+                    <p class="info-item"><strong>Localisation:</strong> Talence, France</p>
+                    <p class="info-item"><strong>Langues:</strong> Arabe (natif), Français (C1), Anglais (B2 · TOEIC 865)</p>
+                    <p class="info-item"><strong>Disponibilité:</strong> Stage 3–4 mois (mai–sept 2026)</p>
+                </div>
+            </div>
+        </section>
 
-      <div class="card">
-        <h2>Infos rapides</h2>
-        <ul>
-          <li>📍 Talence, France</li>
-          <li>💻 C / C++ (avancé), Python, Java</li>
-          <li>🐧 Linux, Bash, Git</li>
-          <li>🌍 FR C1 — EN B2 (TOEIC 865)</li>
-        </ul>
-      </div>
-    </div>
+        <section class="section" id="skills">
+            <h2 class="section-title">Compétences</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Langages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C / C++ (avancé)</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Assembleur</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Systèmes & Outils</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux / Unix</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Emacs</span>
+                        <span class="skill-tag">GDB</span>
+                        <span class="skill-tag">Valgrind</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Concepts</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Algorithmique</span>
+                        <span class="skill-tag">POO</span>
+                        <span class="skill-tag">Structures de données</span>
+                        <span class="skill-tag">Programmation système</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="skills" class="card">
-      <h2>Compétences</h2>
-      <ul>
-        <li><strong>Langages :</strong> C/C++, Python, Java, JavaScript, SQL, Assembleur</li>
-        <li><strong>Systèmes :</strong> Linux/Unix, Bash</li>
-        <li><strong>Outils :</strong> Git, VS Code, Emacs, GDB, Valgrind</li>
-        <li><strong>Concepts :</strong> Algorithmique, POO, structures de données, programmation système</li>
-      </ul>
-    </section>
+        <section class="section" id="projects">
+            <h2 class="section-title">Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🦯</div>
+                    <h3>Canne blanche électronique intelligente</h3>
+                    <p class="project-tech">Arduino · Capteurs · IoT</p>
+                    <p>
+                        Conception d'un dispositif d'assistance pour personnes aveugles utilisant une carte Arduino 
+                        et des capteurs (ultrasoniques et infrarouges) pour détecter les obstacles et améliorer la sécurité des déplacements.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">⚙️</div>
+                    <h3>Compilateur MyC → PCode</h3>
+                    <p class="project-tech">Yacc · Lex · Compilation</p>
+                    <p>
+                        Développement d'un compilateur pour un mini-langage inspiré du C, incluant l'analyse 
+                        syntaxique et la génération de PCode à l'aide de Yacc et de fichiers Lex.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">🎧</div>
+                    <h3>Logiciel audio longue durée</h3>
+                    <p class="project-tech">Recherche · Psychiatrie · Audio Processing</p>
+                    <p>
+                        Création d'un logiciel permettant l'enregistrement audio sur de longues durées pour la recherche en psychiatrie, 
+                        avec gestion précise du temps et optimisation des buffers.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">📅</div>
+                    <h3>Gestionnaire de calendrier</h3>
+                    <p class="project-tech">Java · POO</p>
+                    <p>
+                        Application de gestion d'agenda développée en Java, basée sur les principes de la programmation 
+                        orientée objet (classes, héritage, interfaces).
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">🅿️</div>
+                    <h3>Base de données – Parkings campus</h3>
+                    <p class="project-tech">SQL · PHP · Web</p>
+                    <p>
+                        Conception d'une base de données relationnelle avec interface web en PHP et requêtes SQL 
+                        pour la gestion et l'exploitation des données de parkings du campus.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<section id="projects" class="card">
-  <h2>Projets</h2>
-  <ul>
-    <li>
-      🦯 <strong>Canne blanche électronique intelligente</strong> (Arduino, capteurs) :  
-      conception d’un dispositif d’assistance pour personnes aveugles utilisant une carte Arduino
-      et des capteurs (ultrasoniques et infrarouges) pour détecter les obstacles et améliorer la sécurité
-      des déplacements.
-    </li>
+        <section class="section" id="experience">
+            <h2 class="section-title">Expériences</h2>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <h3>Stagiaire</h3>
+                    <p class="experience-company">AXA Assurance · Maroc</p>
+                    <p>
+                        Digitalisation des archives avec traitement de 200+ contrats. Développement d'une solution 
+                        réduisant le temps de recherche de 60%.
+                    </p>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Assistante pédagogique</h3>
+                    <p class="experience-company">Complétude</p>
+                    <p>
+                        Soutien scolaire en mathématiques et informatique pour différents niveaux d'enseignement.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <li>
-      ⚙️ <strong>Compilateur MyC → PCode</strong> (mini-langage inspiré du C) :  
-      développement d’un compilateur à l’aide de <strong>Yacc</strong> et de fichiers <strong>.l (Lex)</strong>,
-      incluant l’analyse syntaxique et la génération de PCode.
-    </li>
+        <section class="section" id="more">
+            <div class="two-col-grid">
+                <div class="info-box">
+                    <h3>Langues</h3>
+                    <ul class="info-list">
+                        <li><strong>Arabe:</strong> Langue maternelle</li>
+                        <li><strong>Français:</strong> Niveau C1 (courant)</li>
+                        <li><strong>Anglais:</strong> Niveau B2 (TOEIC 865)</li>
+                        <li><strong>Espagnol:</strong> Niveau A2 (notions)</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Centres d'intérêt</h3>
+                    <ul class="info-list">
+                        <li>🎹 Piano</li>
+                        <li>🏃‍♀️ Course à pied (semi-marathons)</li>
+                        <li>💪 Gym / Sport</li>
+                        <li>✈️ Voyages</li>
+                        <li>📚 Lecture (science-fiction, développement personnel)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <li>
-      🎧 <strong>Logiciel audio longue durée</strong> (recherche en psychiatrie) :  
-      création d’un logiciel permettant l’enregistrement audio sur de longues durées,
-      avec une gestion précise du temps et des contraintes techniques liées aux buffers.
-    </li>
-
-    <li>
-      📅 <strong>Gestionnaire de calendrier</strong> (Java, programmation orientée objet) :  
-      développement d’une application de gestion d’agenda en Java,
-      basée sur les principes de la programmation orientée objet
-      (classes, héritage, interfaces).
-    </li>
-
-    <li>
-      🅿️ <strong>Base de données – gestion des parkings du campus</strong> :  
-      conception d’une base de données relationnelle avec une interface web en <strong>PHP</strong>
-      et des requêtes <strong>SQL</strong> pour la gestion et l’exploitation des données.
-    </li>
-  </ul>
-</section>
-
-
-    <section id="experience" class="card">
-      <h2>Expériences</h2>
-      <ul>
-        <li>
-          <strong>Stagiaire — AXA Assurance (Maroc)</strong><br>
-          Digitalisation des archives, 200+ contrats, solution réduisant le temps de recherche de 60%.
-        </li>
-        <li>
-          <strong>Assistante pédagogique — Complétude</strong><br>
-          Soutien scolaire en mathématiques et informatique.
-        </li>
-      </ul>
-    </section>
-
-    <section id="spoken-languages" class="card">
-  <h2>Langues</h2>
-  <ul>
-    <li><strong>Arabe</strong> : langue maternelle</li>
-    <li><strong>Français</strong> : niveau C1 (courant)</li>
-    <li><strong>Anglais</strong> : niveau B2 (TOEIC 865)</li>
-    <li><strong>Espagnol</strong> : niveau A2 (notions)</li>
-  </ul>
-</section>
-
-
-    <section id="interests" class="card">
-  <h2>Loisirs & centres d’intérêt</h2>
-  <ul>
-    <li>🎹 Piano</li>
-    <li>🏃‍♀️ Course à pied (semi-marathons)</li>
-    <li>💪 Gym / sport</li>
-    <li>✈️ Voyages</li>
-    <li>📚 Lecture (science-fiction, développement personnel)</li>
-  </ul>
-</section>
-
-
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <ul>
-        <li>📧 wiamarezqii@gmail.com</li>
-        <li>📞 07 45 39 24 59</li>
-        <li>📍 Talence</li>
-      </ul>
-    </section>
-
-    <footer>
-      © <span id="year"></span> Wiam Arezqi — Portfolio
+    <footer id="contact">
+        <div class="contact-info">
+            <a href="mailto:wiamarezqii@gmail.com" class="contact-item">📧 wiamarezqii@gmail.com</a>
+            <a href="tel:+33745392459" class="contact-item">📞 07 45 39 24 59</a>
+            <span class="contact-item">📍 Talence, France</span>
+        </div>
+        <p class="footer-note">© 2026 Wiam Arezqi — Portfolio</p>
     </footer>
-  </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
+```
