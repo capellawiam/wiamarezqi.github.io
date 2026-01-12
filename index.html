@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,10 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a2b4a;
-            --accent: #ffd700;
-            --soft: #f8f9fc;
-            --mid: #6b7a99;
+            --primary: #1e3a5f;
+            --accent: #ffc107;
+            --soft: #e8f4f8;
+            --mid: #5d7a9e;
+            --blue-light: #d1e7f5;
+            --yellow-light: #fff9e6;
             --spacing: clamp(1rem, 3vw, 2rem);
         }
         
@@ -38,7 +39,7 @@
             align-items: center;
             padding: var(--spacing);
             position: relative;
-            background: linear-gradient(135deg, #f8f9fc 0%, #e3e8f4 100%);
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
         }
         
         .hero-content {
@@ -52,10 +53,11 @@
             font-size: clamp(0.75rem, 1.5vw, 0.875rem);
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--mid);
+            color: var(--accent);
             margin-bottom: 1rem;
             opacity: 0;
             animation: slideUp 0.8s ease forwards 0.2s;
+            font-weight: 600;
         }
         
         h1 {
@@ -66,11 +68,12 @@
             margin-bottom: 1.5rem;
             opacity: 0;
             animation: slideUp 0.8s ease forwards 0.4s;
+            color: white;
         }
         
         .hero-subtitle {
             font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-            color: var(--mid);
+            color: white;
             max-width: 600px;
             margin-bottom: 2rem;
             opacity: 0;
@@ -88,8 +91,8 @@
         .btn {
             padding: 0.875rem 2rem;
             border: none;
-            background: var(--primary);
-            color: var(--soft);
+            background: var(--accent);
+            color: var(--primary);
             font-family: 'Manrope', sans-serif;
             font-size: 0.9rem;
             letter-spacing: 1px;
@@ -97,23 +100,24 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            font-weight: 600;
         }
         
         .btn:hover {
-            background: var(--accent);
-            color: var(--primary);
+            background: #ffca28;
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
         }
         
         .btn-outline {
             background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid white;
+            color: white;
         }
         
         .btn-outline:hover {
-            background: var(--primary);
-            color: var(--soft);
+            background: white;
+            color: var(--primary);
         }
         
         /* Decorative elements */
@@ -124,7 +128,7 @@
             background: linear-gradient(to bottom, transparent, var(--accent), transparent);
             right: 10%;
             top: 20%;
-            opacity: 0.3;
+            opacity: 0.6;
         }
         
         /* Main content with asymmetric grid */
@@ -145,6 +149,7 @@
             margin-bottom: calc(var(--spacing) * 1.5);
             position: relative;
             display: inline-block;
+            color: var(--primary);
         }
         
         .section-title::after {
@@ -153,7 +158,7 @@
             bottom: -8px;
             left: 0;
             width: 60px;
-            height: 1px;
+            height: 3px;
             background: var(--accent);
         }
         
@@ -169,12 +174,14 @@
         .about-card {
             background: white;
             padding: calc(var(--spacing) * 1.5);
-            border-left: 3px solid var(--accent);
-            transition: transform 0.3s ease;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
         
         .about-card:hover {
             transform: translateX(10px);
+            box-shadow: 0 6px 25px rgba(255, 193, 7, 0.2);
         }
         
         .about-card h3 {
@@ -209,9 +216,9 @@
             font-size: 1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--mid);
+            color: var(--primary);
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 600;
         }
         
         .skill-tags {
@@ -223,16 +230,18 @@
         .skill-tag {
             padding: 0.5rem 1.25rem;
             background: white;
-            border: 1px solid rgba(26, 26, 26, 0.1);
+            border: 2px solid var(--blue-light);
             font-size: 0.875rem;
             transition: all 0.3s ease;
             cursor: default;
+            color: var(--primary);
         }
         
         .skill-tag:hover {
             border-color: var(--accent);
             background: var(--primary);
-            color: var(--soft);
+            color: white;
+            transform: translateY(-2px);
         }
         
         /* Projects with magazine-style layout */
@@ -250,12 +259,13 @@
             position: relative;
             transition: all 0.4s ease;
             border-bottom: 3px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
         
         .project-card:hover {
             transform: translateY(-8px);
             border-bottom-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.15);
         }
         
         .project-icon {
@@ -274,7 +284,7 @@
             font-size: 0.8rem;
             color: var(--accent);
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 1px;
         }
         
@@ -298,8 +308,8 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent) 0%, var(--primary) 100%);
         }
         
         .experience-item {
@@ -307,6 +317,7 @@
             position: relative;
             background: white;
             padding: calc(var(--spacing) * 1.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
         
         .experience-item::before {
@@ -314,22 +325,24 @@
             position: absolute;
             left: -48px;
             top: calc(var(--spacing) * 1.25);
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--accent);
-            border: 3px solid var(--soft);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--soft);
         }
         
         .experience-item h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            color: var(--primary);
         }
         
         .experience-company {
-            color: var(--accent);
-            font-weight: 500;
+            color: var(--primary);
+            font-weight: 600;
             font-size: 0.95rem;
             margin-bottom: 0.75rem;
         }
@@ -346,6 +359,8 @@
         .info-box {
             background: white;
             padding: calc(var(--spacing) * 1.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--primary);
         }
         
         .info-box h3 {
@@ -361,7 +376,7 @@
         
         .info-list li {
             padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+            border-bottom: 1px solid var(--blue-light);
             color: var(--mid);
         }
         
@@ -371,22 +386,27 @@
         
         .info-list strong {
             color: var(--primary);
-            font-weight: 500;
+            font-weight: 600;
         }
         
         /* Contact footer */
         footer {
             background: var(--primary);
-            color: var(--soft);
+            color: white;
             padding: calc(var(--spacing) * 3) var(--spacing);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .contact-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 300;
-            margin-bottom: calc(var(--spacing) * 1.5);
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
         }
         
         .contact-info {
@@ -399,18 +419,19 @@
         
         .contact-item {
             font-size: 1.125rem;
-            color: var(--soft);
+            color: white;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .contact-item:hover {
             color: var(--accent);
+            transform: translateY(-2px);
         }
         
         .footer-note {
             font-size: 0.875rem;
-            color: var(--mid);
+            color: var(--blue-light);
             margin-top: calc(var(--spacing) * 2);
         }
         
@@ -474,13 +495,13 @@
 <body>
     <header>
         <div class="hero-content">
-    <p class="hero-eyebrow">Étudiante ingénieure en informatique</p>
-    <h1>Wiam Arezqi</h1>
-    <p class="hero-subtitle">
-        Étudiante en 2ᵉ année du cycle ingénieur à l'ENSEIRB-MATMECA (Bordeaux INP). 
-        Passionnée par l'algorithmique, le développement logiciel et la programmation système. 
-        À la recherche d'un stage de 3–4 mois (mai–septembre 2026).
-    </p>
+            <p class="hero-eyebrow">Élève-ingénieure • ENSEIRB-MATMECA</p>
+            <h1>Wiam Arezqi</h1>
+            <p class="hero-subtitle">
+                2ᵉ année du cycle ingénieur en informatique à l'ENSEIRB-MATMECA (Bordeaux INP). 
+                Spécialisée en algorithmique, développement logiciel et programmation système. 
+                À la recherche d'un stage de 3–4 mois (mai–septembre 2026).
+            </p>
             <div class="cta-group">
                 <a href="#contact" class="btn">Me contacter</a>
                 <a href="#projects" class="btn btn-outline">Voir mes projets</a>
@@ -522,7 +543,6 @@
                         <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">SQL</span>
                         <span class="skill-tag">Assembleur</span>
-                        <span class="skill-tag">Html/Css</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -625,6 +645,7 @@
                 </div>
             </div>
         </section>
+
         <section class="section" id="engagement">
             <h2 class="section-title">Engagement associatif</h2>
             <div class="experience-list">
@@ -704,4 +725,3 @@
     </script>
 </body>
 </html>
-```
