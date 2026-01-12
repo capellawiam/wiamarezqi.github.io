@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiam Arezqi — Portfolio</title>
+
+  <style>
+    :root{
+      --blue:#5EC8FF;
+      --yellow:#FFD84D;
+      --dark:#0E1B2A;
+      --bg:#F7FBFF;
+      --card:#FFFFFF;
+      --muted:#5B6B7A;
+      --radius:18px;
+      --shadow:0 12px 30px rgba(0,0,0,.1);
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(94,200,255,.25), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(255,216,77,.25), transparent 55%),
+        var(--bg);
+      color:var(--dark);
+    }
+
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:1100px;margin:auto;padding:24px;}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:24px;
+    }
+
+    .logo{
+      width:44px;height:44px;border-radius:14px;
+      background:linear-gradient(135deg,var(--blue),var(--yellow));
+    }
+
+    nav a{
+      margin-left:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:white;
+      box-shadow:var(--shadow);
+      font-size:14px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:20px;
+    }
+
+    @media(max-width:800px){
+      .hero{grid-template-columns:1fr;}
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    h1{
+      font-size:40px;
+      margin:0 0 10px;
+    }
+
+    h2{
+      margin:0 0 12px;
+      font-size:22px;
+    }
+
+    p{color:var(--muted);}
+
+    .btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--blue),var(--yellow));
+      font-weight:700;
+    }
+
+    section{margin-top:28px;}
+
+    ul{padding-left:18px;color:var(--muted);}
+    li{margin:6px 0;}
+
+    footer{
+      margin-top:40px;
+      text-align:center;
+      color:var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="logo"></div>
+        <strong>Wiam Arezqi</strong>
+      </div>
+      <nav>
+        <a href="#skills">Compétences</a>
+        <a href="#projects">Projets</a>
+        <a href="#experience">Expériences</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="card">
+        <h1>Étudiante en informatique</h1>
+        <p>
+          Étudiante en 2e année à l’ENSEIRB–MATMECA (Bordeaux INP),
+          passionnée par l’algorithmique, le développement logiciel
+          et la programmation système.
+        </p>
+        <p>
+          🔍 Recherche un <strong>stage de 3–4 mois (mai–septembre 2026)</strong>
+        </p>
+        <a class="btn" href="#contact">Me contacter</a>
+      </div>
+
+      <div class="card">
+        <h2>Infos rapides</h2>
+        <ul>
+          <li>📍 Talence, France</li>
+          <li>💻 C / C++ (avancé), Python, Java</li>
+          <li>🐧 Linux, Bash, Git</li>
+          <li>🌍 FR C1 — EN B2 (TOEIC 865)</li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="skills" class="card">
+      <h2>Compétences</h2>
+      <ul>
+        <li><strong>Langages :</strong> C/C++, Python, Java, JavaScript, SQL, Assembleur</li>
+        <li><strong>Systèmes :</strong> Linux/Unix, Bash</li>
+        <li><strong>Outils :</strong> Git, VS Code, Emacs, GDB, Valgrind</li>
+        <li><strong>Concepts :</strong> Algorithmique, POO, structures de données, programmation système</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projets</h2>
+      <ul>
+        <li>🦯 Canne blanche électronique intelligente (Arduino, capteurs)</li>
+        <li>⚙️ Compilateur MyC → PCode</li>
+        <li>🎧 Logiciel audio longue durée (recherche en psychiatrie)</li>
+        <li>📅 Gestionnaire de calendrier Java + ICS Parser</li>
+        <li>🅿️ Base de données : gestion des parkings du campus</li>
+      </ul>
+    </section>
+
+    <section id="experience" class="card">
+      <h2>Expériences</h2>
+      <ul>
+        <li>
+          <strong>Stagiaire — AXA Assurance (Maroc)</strong><br>
+          Digitalisation des archives, 200+ contrats, solution réduisant le temps de recherche de 60%.
+        </li>
+        <li>
+          <strong>Assistante pédagogique — Complétude</strong><br>
+          Soutien scolaire en mathématiques et informatique.
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <ul>
+        <li>📧 wiamarezqii@gmail.com</li>
+        <li>📞 07 45 39 24 59</li>
+        <li>📍 Talence</li>
+      </ul>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Wiam Arezqi — Portfolio
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
