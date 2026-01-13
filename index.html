@@ -19,38 +19,15 @@
             --yellow: #fbbf24;
             --dark: #1e293b;
             --light: #f1f5f9;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #1e40af, #1e3a8a);
+            background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
             color: white;
             overflow-x: hidden;
         }
 
-        /* Particules d'arrière-plan */
-        .particles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--yellow);
-            border-radius: 50%;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.7; }
-        }
-
-        /* Navigation fixe */
         nav {
             position: fixed;
             top: 0;
@@ -92,7 +69,6 @@
             width: 100%;
         }
 
-        /* Hero section FOLLE */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -100,22 +76,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
-        }
-
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
         }
 
         .hero-content {
@@ -215,7 +176,6 @@
             }
         }
 
-        /* Floating shapes */
         .shape {
             position: absolute;
             border-radius: 50%;
@@ -246,7 +206,6 @@
             66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
 
-        /* Section style */
         section {
             padding: 5rem 2rem;
             position: relative;
@@ -263,8 +222,91 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Skills section FOLLE avec cercles */
         .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--yellow);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .skill-level-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+        }
+
+        .level-advanced {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid #10b981;
+        }
+
+        .level-very-advanced {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid #fbbf24;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1.5s ease;
+            width: 0;
+        }
+
+        .progress-bar.advanced {
+            background: linear-gradient(90deg, #10b981, #059669);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .progress-bar.very-advanced {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        .progress-bar.animate {
+            width: var(--progress);
+        }
+
+        .languages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 3rem;
@@ -323,13 +365,12 @@
             color: var(--yellow);
         }
 
-        .skill-name {
+        .circle-skill-name {
             font-size: 0.9rem;
             margin-top: 0.5rem;
             font-weight: 600;
         }
 
-        /* Projects avec cartes 3D */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -370,18 +411,6 @@
             border-color: var(--yellow);
         }
 
-        .project-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
         .project-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
@@ -403,7 +432,6 @@
             border: 1px solid var(--yellow);
         }
 
-        /* Timeline pour expériences */
         .timeline {
             max-width: 1000px;
             margin: 0 auto;
@@ -466,46 +494,8 @@
             margin-bottom: 1rem;
         }
 
-        /* Stats animées */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 3rem auto;
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .stat-box:hover {
-            transform: scale(1.05);
-            border-color: var(--yellow);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--yellow);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            opacity: 0.8;
-        }
-
-        /* Contact section */
         .contact-section {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%);
             padding: 5rem 2rem;
             text-align: center;
         }
@@ -539,7 +529,6 @@
             box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
@@ -547,7 +536,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .timeline::before {
                 left: 30px;
@@ -572,7 +560,6 @@
             }
         }
 
-        /* Scroll animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -586,22 +573,16 @@
     </style>
 </head>
 <body>
-    <!-- Particules -->
-    <div class="particles" id="particles"></div>
-
-
-
-    <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="shape shape1"></div>
         <div class="shape shape2"></div>
         <div class="hero-content">
-            <div class="hero-tag">✨ ÉLÈVE-INGÉNIEURE • ENSEIRB-MATMECA</div>
+            <div class="hero-tag">ÉLÈVE-INGÉNIEURE EN INFORMATIQUE • ENSEIRB-MATMECA</div>
             <h1>WIAM AREZQI</h1>
             <p class="hero-subtitle">
                 2ᵉ année du cycle ingénieur en informatique à l'ENSEIRB-MATMECA (Bordeaux INP).<br>
                 Spécialisée en algorithmique, développement logiciel et programmation système.<br>
-                🔍 Recherche un stage de 3–4 mois (mai–septembre 2026)
+                Recherche un stage de 3–4 mois (mai–septembre 2026)
             </p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Me contacter</a>
@@ -610,95 +591,85 @@
         </div>
     </section>
 
-    <!-- Skills avec cercles -->
     <section id="skills">
         <h2 class="section-title">Compétences Techniques</h2>
         <div class="skills-grid">
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 44"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">90%</div>
+            <div class="skill-item fade-in">
+                <div class="skill-header">
                     <div class="skill-name">C/C++</div>
+                    <div class="skill-level-text level-very-advanced">Très avancé</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar very-advanced" style="--progress: 90%"></div>
                 </div>
             </div>
 
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 88"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">80%</div>
+            <div class="skill-item fade-in">
+                <div class="skill-header">
                     <div class="skill-name">Python</div>
+                    <div class="skill-level-text level-very-advanced">Très avancé</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar very-advanced" style="--progress: 90%"></div>
                 </div>
             </div>
 
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 110"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">75%</div>
+            <div class="skill-item fade-in">
+                <div class="skill-header">
                     <div class="skill-name">Java</div>
+                    <div class="skill-level-text level-advanced">Avancé</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar advanced" style="--progress: 75%"></div>
                 </div>
             </div>
 
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 132"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">75%</div>
+            <div class="skill-item fade-in">
+                <div class="skill-header">
                     <div class="skill-name">JavaScript</div>
+                    <div class="skill-level-text level-advanced">Avancé</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar advanced" style="--progress: 75%"></div>
                 </div>
             </div>
 
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 66"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">85%</div>
+            <div class="skill-item fade-in">
+                <div class="skill-header">
                     <div class="skill-name">Linux</div>
+                    <div class="skill-level-text level-very-advanced">Très avancé</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar very-advanced" style="--progress: 90%"></div>
                 </div>
             </div>
 
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 88"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">80%</div>
+            <div class="skill-item fade-in">
+                <div class="skill-header">
                     <div class="skill-name">Git</div>
+                    <div class="skill-level-text level-very-advanced">Très avancé</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar very-advanced" style="--progress: 90%"></div>
                 </div>
             </div>
 
-            <div class="skill-circle fade-in">
-                <svg>
-                    <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 110"></circle>
-                </svg>
-                <div class="skill-info">
-                    <div class="skill-percentage">75%</div>
+            <div class="skill-item fade-in">
+                <div class="skill-header">
                     <div class="skill-name">HTML/CSS</div>
+                    <div class="skill-level-text level-advanced">Avancé</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar advanced" style="--progress: 75%"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects" style="background: rgba(0,0,0,0.3);">
         <h2 class="section-title">Projets Innovants</h2>
         <div class="projects-grid">
             <div class="project-card fade-in">
-                <div class="project-icon">🦯</div>
                 <h3>Canne blanche électronique intelligente</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Arduino</span>
@@ -709,7 +680,6 @@
             </div>
 
             <div class="project-card fade-in">
-                <div class="project-icon">⚙️</div>
                 <h3>Compilateur MyC → PCode</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Yacc</span>
@@ -720,7 +690,6 @@
             </div>
 
             <div class="project-card fade-in">
-                <div class="project-icon">🎧</div>
                 <h3>Logiciel audio longue durée</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Research</span>
@@ -731,7 +700,6 @@
             </div>
 
             <div class="project-card fade-in">
-                <div class="project-icon">📅</div>
                 <h3>Gestionnaire de calendrier</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Java</span>
@@ -742,7 +710,6 @@
             </div>
 
             <div class="project-card fade-in">
-                <div class="project-icon">🅿️</div>
                 <h3>Base de données parkings</h3>
                 <div class="project-tech">
                     <span class="tech-tag">SQL</span>
@@ -753,7 +720,6 @@
             </div>
 
             <div class="project-card fade-in">
-                <div class="project-icon">🎮</div>
                 <h3>Jeu Carcassonne</h3>
                 <div class="project-tech">
                     <span class="tech-tag">C</span>
@@ -764,7 +730,6 @@
             </div>
 
             <div class="project-card fade-in">
-                <div class="project-icon">🏙️</div>
                 <h3>Jeu Megalopolis</h3>
                 <div class="project-tech">
                     <span class="tech-tag">JavaScript</span>
@@ -776,7 +741,6 @@
         </div>
     </section>
 
-    <!-- Experience Timeline -->
     <section id="experience">
         <h2 class="section-title">Parcours Professionnel</h2>
         <div class="timeline">
@@ -803,7 +767,7 @@
                 <div class="timeline-content">
                     <h3>Membre du BDE</h3>
                     <p class="company">ENSEIRB-MATMECA</p>
-                    <p>Organisation d'événements étudiants (soirées, tournois sportifs ...), communication et logistique.</p>
+                    <p>Organisation d'événements étudiants (soirées, tournois sportifs), communication et logistique.</p>
                 </div>
             </div>
 
@@ -818,10 +782,9 @@
         </div>
     </section>
 
-    <!-- Langues -->
     <section style="background: rgba(0,0,0,0.2); padding: 4rem 2rem;">
         <h2 class="section-title">Langues</h2>
-        <div class="skills-grid" style="max-width: 800px;">
+        <div class="languages-grid">
             <div class="skill-circle fade-in">
                 <svg>
                     <circle class="bg" cx="75" cy="75" r="70"></circle>
@@ -829,7 +792,7 @@
                 </svg>
                 <div class="skill-info">
                     <div class="skill-percentage">100%</div>
-                    <div class="skill-name">Arabe</div>
+                    <div class="circle-skill-name">Arabe</div>
                 </div>
             </div>
 
@@ -839,19 +802,19 @@
                     <circle class="progress" cx="75" cy="75" r="70" style="--offset: 44"></circle>
                 </svg>
                 <div class="skill-info">
-                    <div class="skill-percentage">90%</div>
-                    <div class="skill-name">Français</div>
+                    <div class="skill-percentage">C1</div>
+                    <div class="circle-skill-name">Français</div>
                 </div>
             </div>
 
             <div class="skill-circle fade-in">
                 <svg>
                     <circle class="bg" cx="75" cy="75" r="70"></circle>
-                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 88"></circle>
+                    <circle class="progress" cx="75" cy="75" r="70" style="--offset: 44"></circle>
                 </svg>
                 <div class="skill-info">
-                    <div class="skill-percentage">80%</div>
-                    <div class="skill-name">Anglais</div>
+                    <div class="skill-percentage">C1</div>
+                    <div class="circle-skill-name">Anglais</div>
                 </div>
             </div>
 
@@ -861,133 +824,81 @@
                     <circle class="progress" cx="75" cy="75" r="70" style="--offset: 264"></circle>
                 </svg>
                 <div class="skill-info">
-                    <div class="skill-percentage">40%</div>
-                    <div class="skill-name">Espagnol</div>
+                    <div class="skill-percentage">A2</div>
+                    <div class="circle-skill-name">Espagnol</div>
                 </div>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">
-            <p>🇲🇦 Arabe (natif) · 🇫🇷 Français (C1) · 🇬🇧 Anglais (B2 - TOEIC 865) · 🇪🇸 Espagnol (A2)</p>
-        </div>
     </section>
 
-    <!-- Loisirs -->
     <section id="hobbies">
         <h2 class="section-title">Centres d'Intérêt</h2>
         <div class="projects-grid" style="max-width: 1000px;">
             <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">🎹</div>
                 <h3>Piano</h3>
                 <p>Pratique régulière du piano classique et moderne</p>
             </div>
 
             <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">🏃‍♀️</div>
                 <h3>Course à pied</h3>
                 <p>Semi-marathons et running passionnée</p>
             </div>
 
             <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">💪</div>
                 <h3>Sport & Gym</h3>
                 <p>Entraînement régulier et fitness</p>
             </div>
 
             <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">✈️</div>
                 <h3>Voyages</h3>
                 <p>Découverte de nouvelles cultures et destinations</p>
             </div>
 
             <div class="project-card fade-in" style="text-align: center;">
-                <div class="project-icon">📚</div>
                 <h3>Lecture</h3>
                 <p>Science-fiction et développement personnel</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
     <section class="contact-section" id="contact">
-        <h2 class="section-title">Restons en Contact</h2>
+        <h2 class="section-title">Contact</h2>
         <p style="font-size: 1.2rem; margin-bottom: 2rem;">Prête à discuter de votre projet ? Contactez-moi !</p>
         <div class="contact-grid">
-           <div class="contact-item">
-    📧 wiamarezqii@gmail.com
-</div>
-
-<div class="contact-item">
-    📞 07 45 39 24 59
-</div>
-
-            <span class="contact-item">
-                📍 Talence, France
-            </span>
+            <div class="contact-item">
+                wiamarezqii@gmail.com
+            </div>
+            <div class="contact-item">
+                07 45 39 24 59
+            </div>
+            <div class="contact-item">
+                Talence, France
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© 2026 Wiam Arezqi — Portfolio</p>
     </footer>
 
     <script>
-        // Particules générées dynamiquement
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 5 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = Math.random() * 10 + 15 + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Intersection Observer pour animations au scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    const progressBar = entry.target.querySelector('.progress-bar');
+                    if (progressBar) {
+                        setTimeout(() => {
+                            progressBar.classList.add('animate');
+                        }, 200);
+                    }
                 }
             });
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Animation des statistiques
-        function animateNumber(element) {
-            const target = parseInt(element.dataset.target);
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 16);
-        }
-
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const number = entry.target.querySelector('.stat-number');
-                    animateNumber(number);
-                    statObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.querySelectorAll('.stat-box').forEach(el => statObserver.observe(el));
-
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
