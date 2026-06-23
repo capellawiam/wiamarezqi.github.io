@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenue petite princesse 💗</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fff7fb;
+      --pink: #ffc9dc;
+      --pink-strong: #f58cb4;
+      --rose: #ffeff6;
+      --cream: #fffaf1;
+      --gold: #e8bc63;
+      --text: #4b2f3f;
+      --soft-text: #7a5b69;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(181, 90, 126, 0.18);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #ffe0ec 0, transparent 32%),
+        radial-gradient(circle at bottom right, #fff0c8 0, transparent 30%),
+        linear-gradient(180deg, #fff7fb, #fffaf1);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(#ffd2e2 1px, transparent 1px),
+        radial-gradient(#ffe9a8 1px, transparent 1px);
+      background-size: 42px 42px, 70px 70px;
+      background-position: 0 0, 12px 18px;
+      opacity: 0.55;
+      z-index: -1;
+    }
+
+    .floating {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -80px;
+      font-size: 1.3rem;
+      opacity: 0.45;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      12% {
+        opacity: 0.55;
+      }
+      85% {
+        opacity: 0.45;
+      }
+      to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1.2rem;
+      text-align: center;
+    }
+
+    .hero-card {
+      width: min(920px, 100%);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 38px;
+      padding: clamp(2rem, 6vw, 5rem);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "👶🏻";
+      position: absolute;
+      top: 1rem;
+      right: 1.3rem;
+      font-size: 3rem;
+      opacity: 0.16;
+      transform: rotate(12deg);
+    }
+
+    .mini-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      background: var(--rose);
+      border-radius: 999px;
+      color: var(--pink-strong);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-family: "Pacifico", cursive;
+      font-weight: 400;
+      font-size: clamp(2.7rem, 8vw, 6rem);
+      line-height: 1.05;
+      color: #c94f82;
+      margin-bottom: 1.2rem;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--soft-text);
+      line-height: 1.85;
+      font-size: clamp(1rem, 2vw, 1.14rem);
+    }
+
+    .date-pill {
+      margin: 1.8rem auto 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--cream);
+      border: 1px solid rgba(232, 188, 99, 0.36);
+      color: #8a5a15;
+      padding: 0.8rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 8px 25px rgba(232, 188, 99, 0.15);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button,
+    .link-button {
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 0.9rem 1.25rem;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #ff94bd, #ffc2d7);
+      color: white;
+      box-shadow: 0 12px 24px rgba(245, 140, 180, 0.32);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(245, 140, 180, 0.42);
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #c94f82;
+      border: 1px solid rgba(245, 140, 180, 0.25);
+    }
+
+    .secondary-btn:hover {
+      transform: translateY(-3px);
+      background: #fff0f6;
+    }
+
+    section {
+      width: min(1050px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 0.8rem;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: #b34374;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      color: var(--soft-text);
+      line-height: 1.8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.78);
+      border-radius: 28px;
+      padding: 1.7rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .card h3 {
+      color: #b34374;
+      margin-bottom: 0.8rem;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: var(--soft-text);
+      line-height: 1.85;
+    }
+
+    .distance-card {
+      text-align: center;
+      padding: 2.3rem;
+      background:
+        linear-gradient(135deg, rgba(255, 230, 240, 0.95), rgba(255, 250, 241, 0.95));
+    }
+
+    .route {
+      position: relative;
+      height: 150px;
+      max-width: 650px;
+      margin: 2rem auto 1rem;
+    }
+
+    .route-line {
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      top: 50%;
+      border-top: 3px dashed rgba(201, 79, 130, 0.36);
+      transform: translateY(-50%);
+    }
+
+    .place {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      gap: 0.4rem;
+      justify-items: center;
+      font-weight: 700;
+      color: #9a3765;
+    }
+
+    .place.france {
+      left: 0;
+    }
+
+    .place.maroc {
+      right: 0;
+    }
+
+    .pin {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(181, 90, 126, 0.18);
+      animation: pulse 1.8s infinite;
+    }
+
+    .travel-heart {
+      position: absolute;
+      top: 50%;
+      left: 12%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem;
+      animation: travel 4s ease-in-out infinite;
+      filter: drop-shadow(0 8px 10px rgba(245, 140, 180, 0.4));
+    }
+
+    @keyframes travel {
+      0%, 100% { left: 12%; }
+      50% { left: 88%; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .interaction-zone {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .interaction {
+      background: white;
+      border-radius: 26px;
+      padding: 1.25rem;
+      min-height: 175px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 201, 220, 0.55);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .interaction .icon {
+      font-size: 2.3rem;
+    }
+
+    .interaction h3 {
+      font-size: 1rem;
+      color: #b34374;
+    }
+
+    .interaction button {
+      font-size: 0.8rem;
+      padding: 0.7rem 0.9rem;
+      background: #fff0f6;
+      color: #c94f82;
+      border: 1px solid rgba(245, 140, 180, 0.25);
+    }
+
+    .interaction button:hover {
+      background: #ffc9dc;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .letter-box {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s ease, margin-top 0.35s ease;
+      color: var(--soft-text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    .letter-box.open {
+      max-height: 360px;
+      margin-top: 1rem;
+    }
+
+    .gift-message,
+    .star-message {
+      display: none;
+      margin-top: 0.8rem;
+      color: var(--soft-text);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .gift-message.show,
+    .star-message.show {
+      display: block;
+      animation: pop 0.35s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .counter-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #c94f82;
+    }
+
+    .message-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.82);
+      border-radius: 32px;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .message-card p {
+      line-height: 1.95;
+      color: var(--soft-text);
+      margin-bottom: 1rem;
+    }
+
+    .message-card strong {
+      color: #b34374;
+    }
+
+    .wish-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .wish {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      padding: 1.4rem;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(181, 90, 126, 0.12);
+      border: 1px solid rgba(255, 201, 220, 0.55);
+    }
+
+    .wish span {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .wish p {
+      color: var(--soft-text);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--soft-text);
+    }
+
+    footer .heart {
+      font-size: 3rem;
+      animation: heartbeat 1.6s infinite;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      20% { transform: scale(1.16); }
+      35% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1.2rem;
+      transform: translateX(-50%) translateY(120px);
+      background: white;
+      color: #b34374;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      z-index: 50;
+      transition: transform 0.35s ease;
+      text-align: center;
+      width: max-content;
+      max-width: calc(100% - 2rem);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .burst {
+      position: fixed;
+      pointer-events: none;
+      z-index: 60;
+      animation: burst 1.1s ease-out forwards;
+      font-size: 1.4rem;
+    }
+
+    @keyframes burst {
+      from {
+        transform: translate(0, 0) scale(0.8) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translate(var(--x), var(--y)) scale(1.8) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    .star {
+      position: fixed;
+      top: -40px;
+      pointer-events: none;
+      z-index: 55;
+      animation: starFall 1.8s linear forwards;
+      font-size: 1.2rem;
+    }
+
+    @keyframes starFall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 950px) {
+      .interaction-zone {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .interaction:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid,
+      .wish-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        border-radius: 28px;
+      }
+
+      .route {
+        height: 180px;
+      }
+
+      .route-line {
+        left: 18%;
+        right: 18%;
+      }
+
+      .place span:last-child {
+        font-size: 0.85rem;
+      }
+
+      .travel-heart {
+        animation-name: travelMobile;
+      }
+
+      @keyframes travelMobile {
+        0%, 100% { left: 18%; }
+        50% { left: 82%; }
+      }
+    }
+
+    @media (max-width: 520px) {
+      .interaction-zone {
+        grid-template-columns: 1fr;
+      }
+
+      .interaction:last-child {
+        grid-column: auto;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .primary-btn,
+      .secondary-btn,
+      .link-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="floating" id="floating"></div>
+  <div class="toast" id="toast">Message envoyé 💗</div>
+
+  <main class="page">
+    <header>
+      <div class="hero-card">
+        <div class="mini-label">🌸 Née le 22 juin</div>
+        <h1>Bienvenue petite princesse</h1>
+        <p class="subtitle">
+          Un petit site rempli d’amour pour célébrer ton arrivée,
+          féliciter ta maman Nawal, et envoyer depuis Bordeaux tout ce que le cœur voulait dire à Marrakech.
+        </p>
+
+        <div class="date-pill">  Btibitaaaaaaaaaaaa </div>
+
+        <div class="hero-actions">
+          <button class="primary-btn" onclick="sendHug(event)">Clique ici pour recevoir un câlin de tata</button>
+          <a href="#messages" class="link-button secondary-btn">Lire les petits mots</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="reveal" id="messages">
+      <h2 class="section-title">Pour Nawal et sa petite fille</h2>
+      <p class="section-subtitle">
+        Des mots simples, doux et sincères, parce que les grands moments n’ont pas toujours besoin de grandes phrases.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Pour toi, Nawal 💗</h3>
+          <p>
+            Ma sœur, je suis tellement heureuse pour toi. Te savoir maman me touche énormément.
+            J’aurais aimé être là, te serrer dans mes bras et rencontrer ta petite fille dès ses premiers instants.
+            Mais même de loin, je pense très fort à vous deux.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Pour toi, petite merveille 👶🏻</h3>
+          <p>
+            Bienvenue dans la famille, petite princesse. Tu es arrivée le 22 juin, et depuis ce jour,
+            tu as déjà pris une grande place dans nos cœurs. Je te souhaite une vie pleine d’amour,
+            de santé, de douceur et de jolis moments.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="card distance-card">
+        <h2 class="section-title">France → Maroc</h2>
+        <p class="section-subtitle">
+          Je n’ai pas pu être présente physiquement, mais mon cœur était avec vous.
+          La distance peut séparer les bras, jamais l’amour.
+        </p>
+
+        <div class="route">
+          <div class="route-line"></div>
+          <div class="travel-heart">💌</div>
+
+          <div class="place france">
+            <div class="pin">🇫🇷</div>
+            <span>Moi</span>
+            <span>France</span>
+          </div>
+
+          <div class="place maroc">
+            <div class="pin">🇲🇦</div>
+            <span>Vous</span>
+            <span>Maroc</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2 class="section-title">Petites surprises interactives</h2>
+      <p class="section-subtitle">
+        Clique un peu partout. Oui, c’est officiellement un site qui distribue de l’amour.
+      </p>
+
+      <div class="interaction-zone">
+        <div class="interaction">
+          <div>
+            <div class="icon">🤗</div>
+            <h3>Câlin de tata</h3>
+          </div>
+          <button onclick="sendHug(event)">Recevoir un câlin</button>
+        </div>
+
+        <div class="interaction">
+          <div>
+            <div class="icon">💌</div>
+            <h3>Lettre cachée</h3>
+          </div>
+          <button onclick="toggleLetter()">Ouvrir l’enveloppe</button>
+        </div>
+
+        <div class="interaction">
+          <div>
+            <div class="icon">🎁</div>
+            <h3>Petit cadeau</h3>
+          </div>
+          <button onclick="openGift(event)">Ouvrir</button>
+        </div>
+
+        <div class="interaction">
+          <div>
+            <div class="icon">✨</div>
+            <h3>Pluie d’étoiles</h3>
+          </div>
+          <button onclick="starRain()">Lancer les étoiles</button>
+        </div>
+
+        <div class="interaction">
+          <div>
+            <div class="icon">💗</div>
+            <h3>Compteur d’amour</h3>
+            <div class="counter-number" id="loveCounter">0</div>
+          </div>
+          <button onclick="addLove(event)">Ajouter de l’amour</button>
+        </div>
+      </div>
+
+      <div class="message-card" style="margin-top: 1.4rem;">
+        <div class="letter-box" id="letterBox">
+          <p>
+            Ma petite nièce, je n’étais pas là le jour de ta naissance, mais je t’ai déjà beaucoup imaginée.
+            J’ai hâte de te rencontrer, de te prendre dans mes bras et de te faire plein de petits bisous.
+          </p>
+          <p>
+            En attendant, je t’envoie tout mon amour depuis la France. Grandis doucement,
+            entourée de ta maman Nawal et de tous ceux qui t’aiment déjà très fort.
+          </p>
+        </div>
+
+        <p class="gift-message" id="giftMessage">
+          Ton petit cadeau : une promesse de tata. Quand je te verrai, je te couvrirai d’amour,
+          de câlins, et probablement de beaucoup trop de photos. 📸💗
+        </p>
+
+        <p class="star-message" id="starMessage">
+          Chaque étoile représente un vœu pour toi : santé, joie, douceur, rires, et une vie remplie d’amour.
+        </p>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2 class="section-title">Mes petits vœux pour toi</h2>
+      <p class="section-subtitle">
+        Rien de compliqué, juste ce qu’on souhaite à un bébé qu’on aime déjà très fort.
+      </p>
+
+      <div class="wish-list">
+        <div class="wish">
+          <span>🌸</span>
+          <p>Que tu sois entourée d’amour chaque jour.</p>
+        </div>
+        <div class="wish">
+          <span>🧸</span>
+          <p>Que tu grandisses en bonne santé, sereine et bien protégée.</p>
+        </div>
+        <div class="wish">
+          <span>☀️</span>
+          <p>Que ta vie soit pleine de rires, de tendresse et de beaux souvenirs.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <div class="heart">💗</div>
+      <p>
+        Pour Nawal et sa petite princesse,<br />
+        avec tout mon amour depuis la France.
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    const floating = document.getElementById("floating");
+    const emojis = ["💗", "🌸", "✨", "🧸", "💕", "🌙"];
+
+    for (let i = 0; i < 26; i++) {
+      const bubble = document.createElement("span");
+      bubble.className = "bubble";
+      bubble.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      bubble.style.left = Math.random() * 100 + "vw";
+      bubble.style.animationDuration = 8 + Math.random() * 9 + "s";
+      bubble.style.animationDelay = Math.random() * 8 + "s";
+      bubble.style.fontSize = 0.9 + Math.random() * 1.3 + "rem";
+      floating.appendChild(bubble);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1900);
+    }
+
+    function createBurst(x, y, count = 18) {
+      const items = ["💗", "💕", "🌸", "✨", "💖"];
+
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement("span");
+        el.className = "burst";
+        el.textContent = items[Math.floor(Math.random() * items.length)];
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 55 + Math.random() * 120;
+
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+        el.style.setProperty("--x", Math.cos(angle) * distance + "px");
+        el.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1200);
+      }
+    }
+
+    function sendHug(event) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 24);
+      showToast("Câlin envoyé depuis la France 🤗💗");
+    }
+
+    function toggleLetter() {
+      const letter = document.getElementById("letterBox");
+      letter.classList.toggle("open");
+      showToast(letter.classList.contains("open") ? "Enveloppe ouverte 💌" : "Enveloppe refermée 💌");
+    }
+
+    function openGift(event) {
+      const msg = document.getElementById("giftMessage");
+      msg.classList.toggle("show");
+
+      const rect = event.currentTarget.getBoundingClientRect();
+      createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 16);
+
+      showToast("Petit cadeau ouvert 🎁");
+    }
+
+    function starRain() {
+      const starMessage = document.getElementById("starMessage");
+      starMessage.classList.add("show");
+
+      for (let i = 0; i < 45; i++) {
+        const star = document.createElement("span");
+        star.className = "star";
+        star.textContent = ["✨", "⭐", "🌟", "💫"][Math.floor(Math.random() * 4)];
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.animationDuration = 1.2 + Math.random() * 1.8 + "s";
+        star.style.animationDelay = Math.random() * 0.5 + "s";
+        star.style.fontSize = 0.9 + Math.random() * 1.4 + "rem";
+        document.body.appendChild(star);
+        setTimeout(() => star.remove(), 3500);
+      }
+
+      showToast("Pluie d’étoiles lancée ✨");
+    }
+
+    let love = 0;
+
+    function addLove(event) {
+      love++;
+      document.getElementById("loveCounter").textContent = love;
+      const rect = event.currentTarget.getBoundingClientRect();
+      createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 12);
+      showToast("Amour ajouté : +" + love + " 💗");
+    }
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
